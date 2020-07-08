@@ -1,0 +1,250 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>功能</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="page-head func-head">
+        <script>
+            if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                var baseUrl = (location.protocol ? location.protocol + '//' : '') + location.host;
+                window.location.href = baseUrl + "/m" + location.pathname;
+            }
+        </script>
+        <div class="home-head-body">
+            <div id="head">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td width="400">
+                                <img src="img/tubiao01.jpg" style="height:60px; width: 200px;" alt="升龙健身房管理系统">
+                            </td>
+                            <td align="right">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="新健身房.html" class="menu-home on">首页</a>
+                                    </li>
+                                    <li>
+                                        <a href="features.html" class="menu-feat">特色</a>
+                                    </li>
+                                    <li>
+                                        <a href="functions.html" class="menu-func">功能</a>
+                                    </li>
+                                    <li>
+                                        <a href="devices.html" class="menu-devices">设备</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html" target="_black">登录</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="baner-10">
+            <img src="img/b6.jpg" alt="">
+        </div>
+    </div>
+    <div class="func-tit-bg">
+        <div class="tit">全面满足健身运动场馆的需求</div>
+        <div class="tips">【如有不能满足的需求，我们可免费定制】</div>
+    </div>
+    <table class="funclist funclist-m" cellpadding="0" cellspacing="0">
+        <tr>
+            <th><img src="img/diannao06.jpg" id="membImg" style="width: 450px; height: 300px; margin-left: 40px;" />
+            </th>
+            <td>
+                <div class="tit">会员电脑端</div>
+                <div class="menus">
+                    <a href="#home1" data-toggle="tab">首页</a>
+                    <a href="#home2" data-toggle="tab">约团课</a>
+                    <a href="#home3" data-toggle="tab">约私教</a>
+                </div>
+                <ul class="desc">
+                    <li class="tab-pane fade in active" id="home1">会员进入电脑版首页，常用功能和基本信息一目了然，
+                        可看到自己当日预约的团课、私教课、自己的所有会员卡信息（包括剩余天数 | 次数 | 金额）,
+                        以及门店设置的全员分销入口图片，会员点击后即可进入分销功能。</li>
+                    <li class="tab-pane fade" id="home2">
+                        升龙健身房支持全面且十分可靠的在线预约上课功能，会员可通过你们的微信公众号、健总管App或小程序预约上课。
+                        <p></p>
+                        会员可在线预约你们排好的课，上课前可取消预约（门店可设置取消的时间限制）；
+                        当预约人数不满门店设置的最少人数，系统可自动取消和退费，并通知预约人员；
+                        当预约满员后，会员可排队等待。会员上课后，可评价每一节课，有利于促进教练上课质量。
+
+                    </li>
+                    <li class="tab-pane fade" id="home3">
+                        升龙健身房经过充分调研和多次优化，推出了极简又安全的私教预约功能。
+                        <p></p>
+                        门店可设置会员预约的私教课，上课教练可在手机版自己设置作息时间。
+                        会员可通过多种方式在线预约私教课，预约成功后系统自动扣费，并自动通知教练，会员在上课前可取消预约。
+                        上课结束后，系统自动签到。
+
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <div class="funclist funclist-pc">
+        <div class="tit">商家后台管理端<span class="gray">（Web版）</span></div>
+        <table class="img-nav">
+            <tr>
+                <td class="ctr"><img class="pc" id="pcImg" src="img/diannao01.jpg"
+                        style="width: 450px; height: 350px;" /></td>
+                <td class="ctr"><img class="pc" id="pcImg" src="img/diannao02.jpg"
+                        style="width: 450px; height: 350px;" /></td>
+            </tr>
+            <tr>
+                <td class="ctr"><img class="pc" id="pcImg" src="img/diannao03.jpg"
+                        style="width: 450px; height: 350px;" /></td>
+                <td class="ctr"><img class="pc" id="pcImg" src="img/diannao04.jpg"
+                        style="width: 450px; height: 350px;" /></td>
+            </tr>
+        </table>
+        <div class="modules">
+            主要模块：
+            <ul>
+                <li>会员管理</li>
+                <li>客户管理</li>
+                <li>课程管理</li>
+                <li>员工管理</li>
+                <li>记账</li>
+                <li>营销工具</li>
+                <li>租柜管理</li>
+                <li>统计报表</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="side">
+        <ul>
+            <li class="tel"><img src="img/tel.png" />
+                <div class="tel-cont">
+                    <img src="img/tel-more.png" />
+                </div>
+            </li>
+            <li onclick="window.scrollTo(0,0)" title="返回顶端"><img src="img/top.png" /></li>
+        </ul>
+    </div>
+    <div id="foot">
+        <div class="main">
+            <div class="menus">
+                <a href="新健身房.html" class="menu-home">首页</a>
+                <a href="features.html" class="menu-feat">特色</a>
+                <a href="functions.html" class="menu-func">功能</a>
+                <a href="devices.html" class="menu-devices">设备</a>
+                <a href="/redirect.html?v=1&to=reg" target="_blank">注册试用</a>
+            </div>
+            <div class="contact">
+                <table>
+                    <tr>
+                        <th>
+                            <div class="cs-contact">
+                                <div id="yourCs">
+                                    <img src="img/ma.jpg" alt="二维码" />
+                                </div>
+                                <div class="cs-tit">健总管公众号</div>
+                            </div>
+                        </th>
+                        <td>
+                            <ul>
+                                <li>
+                                    <label>公司地址：</label>
+                                    "河南省郑州升达经贸管理学院"
+                                </li>
+                                <li>
+                                    <label>联系电话：</label>
+                                    "15514856705"
+                                </li>
+                                <li>
+                                    <label>咨询时间：</label>
+                                    9:00 ~ 22:00
+                                    <span class="gray">（周一至周日）</span>
+                                </li>
+                                <li>
+                                    <label>联系客服：</label>
+                                    "15514856705"
+                                </li>
+                                <li>
+                                    <label>商务QQ：</label>
+                                    "1468626630"
+                                    <span class="gray">(商务合作，代理合作)</span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <img src="img/tubiao01.jpg" class="logo">
+        "2020版权所有 &nbsp; 郑州升达经贸管理学院"
+    </div>
+    <script>
+        $(function () {
+            $('#side').hide();
+            var winHeight = $(document).scrollTop();
+            $(window).scroll(function () {
+                var scrollY = $(document).scrollTop();
+                if (scrollY < 400) {
+                    $('#side').hide();
+                } else {
+                    $('#side').show();
+                }
+            });
+        });
+
+
+//setSalesCantact();
+    </script>
+</body>
+<script>
+    $('.menu-func').addClass('on');
+
+    var gPreMemberItemNo = '';
+    navMemberItem('01');
+    function navMemberItem(itemNo) {
+        $("#membImg").attr('src', 'img/' + itemNo + '.jpg');
+        $('#membMenu' + itemNo).addClass('on');
+        $('#membDesc' + itemNo).show();
+        if (gPreMemberItemNo && gPreMemberItemNo != itemNo) {
+            $('#membMenu' + gPreMemberItemNo).removeClass('on');
+            $('#membDesc' + gPreMemberItemNo).hide();
+        }
+        gPreMemberItemNo = itemNo;
+    }
+
+    var gPcImgId = 0;
+    var gImgCnt = 18;
+    function navPcPage(alt) {
+        gPcImgId += alt;
+        if (gPcImgId < 0 || gPcImgId > gImgCnt) gPcImgId = 0;
+
+        $('#pcImg').attr('src', 'img/prd/pc/' + gPcImgId + '.png');
+    }
+
+    var gPreStaffItemNo = '';
+    navStaffItem('1');
+    function navStaffItem(itemNo) {
+        $("#staffImg").attr('src', 'img/prd/m-staff/' + itemNo + '.png');
+        $('#staffMenu' + itemNo).addClass('on');
+        $('#staffDesc' + itemNo).show();
+        if (gPreStaffItemNo && gPreStaffItemNo != itemNo) {
+            $('#staffMenu' + gPreStaffItemNo).removeClass('on');
+            $('#staffDesc' + gPreStaffItemNo).hide();
+        }
+        gPreStaffItemNo = itemNo;
+    }
+    function changeStaffImg(itemNo) {
+        $("#staffImg").attr('src', 'img/prd/m-staff/' + itemNo + '.png');
+    }
+</script>
+
+</html>

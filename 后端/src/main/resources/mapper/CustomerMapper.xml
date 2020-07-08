@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.xm.mapper.CustomerMapper">
+
+    <!-- select操作
+    parameterType="int"表示该查询语句需要一个int类型的参数
+    resultType="user"表示返回的是一个user对象 -->
+   <select id="selectCustomer" parameterType="Map"  resultType="Map">
+        select u.id,u.name,sex,phone,email,c.name as cocah,date_format(create_date,'%Y-%m-%d') as create_date from customer_inf u,cocah_inf c where u.cocah_id=c.id and u.name like #{name} and u.cocah_id like #{cocah} order by u.id 
+    </select>
+    
+    <select id="selectEmployeeById" parameterType="String"  resultType="Map">
+        select id,cocah_id,name,phone,email,sex,party,date_format(birthday,'%Y-%m-%d') as birthday,remark,date_format(create_date,'%Y-%m-%d') as create_date from customer_inf where id =#{id}
+    </select>   
+    <!-- insert操，parameterType="user"表示该插入语句需要一个user对象作为参数
+    useGeneratedKeys="true"表示使用自动增长的主键 -->
+    <insert id="saveCustomer" parameterType="Customer" >
+        insert into customer_inf(id,cocah_id,name,phone,email,sex,party,birthday,remark,create_date)
+        values(#{id},#{cocah_id},#{name},#{phone},#{email},#{sex},#{party},#{birthday},#{remark},#{create_date},now())
+    </insert>
+
+    <!-- update操作 
+    parameterType="user"表示该更新语句需要一个user对象作为参数-->
+    <update id="modifyCustomer" parameterType="Customer">
+        update customer_inf 
+        set cocah_id=#{cocah_id},name=#{name},phone=#{phone},email=#{email},sex=#{sex},party=#{party},birthday=#{birthday},remark=#{remark},create_date=#{create_date}
+        WHERE id = #{id}
+    </update>
+
+    <!-- delete操作 parameterType="int"表示该查询语句需要一个int类型的参数-->
+    <delete id="removeCustomer" parameterType="String">
+        delete from customer_inf where id = #{id}
+    </delete>
+
+
+</mapper>

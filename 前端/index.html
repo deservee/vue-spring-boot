@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>登录</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+
+</head>
+
+<body style="background-color:#F0F8FF;">
+    <div id="app">
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+    <!-- <div sec:authorize="hasRole('MAN01')">
+        <script src="components/appa.js"></script>
+    </div>
+    <div sec:authorize="hasRole('MAN02')">
+        <script src="components/cocah.js"></script>
+    </div>
+    <div sec:authorize="hasRole('MAN03')">
+        <script src="components/course.js"></script>
+    </div>
+    <div sec:authorize="hasRole('MAN04')">
+        <script src="components/customer.js"></script>
+    </div>
+    <div sec:authorize="hasRole('MAN05')">
+        <script src="components/place.js"></script>
+    </div> -->
+
+    <!--引入日期转换格式函数-->
+    <script src="dateformat/dateformat.js"></script>
+    <!--引入组建-->
+    <script src="components/login.js"></script>
+    <script src="components/pc_head.js"></script>
+    <script src="components/pc_foot.js"></script>
+    <script src="components/pc_side.js"></script>
+    <script src="components/empsel.js"></script>
+    <script src="components/empedit.js"></script>
+    <script src="components/user.js"></script>
+    <script src="components/place.js"></script>
+    <script src="components/course.js"></script>
+    <script src="components/cocah.js"></script>
+    <script src="components/appa.js"></script>
+    <!--引入store共享状态-->
+    <script src="store/store.js"></script>
+    <!--最后，引入路由-->
+    <script src="router/router.js"></script>
+
+    <script>
+         Vue.http.options.withCredentials = true;
+        /******************拦截器设置******************/
+
+        Vue.http.interceptors.push((request, next) => {
+            //登录成功后将后台返回的TOKEN在本地存下来,每次请求从sessionStorage中拿到存储的TOKEN值 
+            //  let TOKEN = localStorage.getItem('STORAGE_TOKEN');
+            //  if (TOKEN) {
+            //如果请求时TOKEN存在,就为每次请求的headers中设置好TOKEN,后台根据headers中的TOKEN判断是否放行 
+
+            //       request.headers.set('token', TOKEN);
+            //    }
+            next((response) => {
+
+                // TOKEN = response.headers.get("token");
+                if (response.body.msg == "尚未登录，请登录!") {
+                    //如果请求时TOKEN存在,就为每次请求的headers中设置好TOKEN,后台根据headers中的TOKEN判断是否放行 
+                    // localStorage.setItem('STORAGE_TOKEN', TOKEN)
+                    router.push("/login");
+                }
+                return response;
+            });
+            template: login_template
+        }
+        )
+        // 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        const app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>

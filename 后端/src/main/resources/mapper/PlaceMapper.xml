@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.xm.mapper.PlaceMapper">
+
+    <!-- select操作
+    parameterType="int"表示该查询语句需要一个int类型的参数
+    resultType="user"表示返回的是一个user对象 -->
+    <select id="selectPlace"  resultType="Place">
+        select id,name,remark from place_inf order by id 
+    </select>
+    
+    <!-- insert操，parameterType="user"表示该插入语句需要一个user对象作为参数
+    useGeneratedKeys="true"表示使用自动增长的主键 -->
+    <insert id="savePlace" parameterType="Place"  >
+        insert into place_inf(id,name,remark) 
+        values(#{id},#{name},#{remark})
+    </insert>
+
+    <!-- update操作 
+    parameterType="user"表示该更新语句需要一个user对象作为参数-->
+    <update id="modifyPlace" parameterType="Place">
+        update place_inf 
+        set name = #{name},remark = #{remark}
+        WHERE id = #{id}
+    </update>
+
+    <!-- delete操作 parameterType="int"表示该查询语句需要一个int类型的参数-->
+    <delete id="removePlace" parameterType="String">
+        delete from place_inf where id = #{id}
+    </delete>
+
+</mapper>

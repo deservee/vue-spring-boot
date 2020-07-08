@@ -1,0 +1,97 @@
+#创建数据库mis
+create database mis;
+
+#使用数据库mis
+use mis;
+
+#删除表
+drop table place_inf;
+drop table cocah_inf;
+drop table customer_inf;
+drop table course_inf;
+drop table appa_inf;
+drop table user_inf;
+
+
+#创建场地表place_inf
+create table place_inf (
+  id varchar(4),
+  name varchar(50) not null,
+  remark varchar(300) null,
+  primary key (id)
+) ;
+insert  into place_inf(id,name,remark) values ('01','游泳馆','游泳馆备注'),('02','瑜伽1馆','瑜伽1馆备注'),('03','瑜伽2馆','瑜伽2馆备注'),('04','羽毛球馆','羽毛球馆备注'),('05','武术馆','武术馆备注'),('06','舞蹈馆','舞蹈馆备注');
+
+#创建教练表cocah_inf
+create table cocah_inf (
+  id varchar(4),
+  name varchar(50) not null,
+  phone varchar(11) not null,
+  createdate date not null,
+  email varchar(50) not null,
+  sex varchar(4) not null default '男',
+  party varchar(10) null,
+  birthday date null,
+  remark varchar(500) null,
+  primary key (id)
+) ;
+insert  into cocah_inf(id,name,phone,createdate,email,sex,party,birthday,remark) values ('01','宋江','15514856701','2018-03-14 11:35:18','251425887@qq.com','男','团操教练','1989-07-08','备注'),('02','卢俊义','15514856702','2018-03-14 11:35:18','251425888@qq.com','男','巡场教练','1988-07-25','备注'),('03','公孙胜','15514856703','2018-04-15 10:32:18','251425877@qq.com','男','助教','1994-05-24','备注'),('04','林冲','15514856704','2018-04-24 09:35:25','251425567@qq.com','男','私人教练','1990-06-17','备注'),('05','武松','15514856706','2018-05-14 14:22:18','25142523@qq.com','男','私人教练','1992-01-22','备注'),('06','扈三娘','15514856707','2018-05-28 16:05:17','251425459@qq.com','女','私人教练','1993-06-08','备注'),('07','晁盖','15514856708','2018-06-23 17:01:18','251425146@qq.com','男','团操教练','1988-03-09','备注'),('08','李逵','15514856709','2018-07-14 13:15:11','251425154@qq.com','男','助教','1994-04-25','备注');
+
+#创建客户表customer_inf
+create table customer_inf (
+  id varchar(4),
+  cocah_id varchar(4),
+  name varchar(20) not null,
+  phone varchar(11) not null,
+  email varchar(50) not null,
+  sex varchar(4) not null default '男',
+  party varchar(10) null,
+  birthday date null,
+  remark varchar(500) null,
+  create_date date not null,
+  primary key (id),
+  foreign key (cocah_id) references cocah_inf (id)
+);
+insert  into customer_inf(id,cocah_id,name,phone,email,sex,party,birthday,remark,create_date) values ('0001','08','爱丽丝','13902001111','251425887@qq.com',"女",'会员','1990-01-01 00:00:00','备注','2019-03-14 11:35:18'),('0002','01','杰克','13642472425','251425885@qq.com',"男",'超级会员','1994-07-08 00:00:00','备注','2019-04-23 10:19:20'),('0003','02','李刚','13907351532','36750064@qq.com',"男",'普通','1997-11-25 00:00:00','备注','2019-07-14 09:54:52'),('0004','01','林黛玉','13642472426','251476885@qq.com',"女",'会员','1995-07-08 00:00:00','备注','2019-04-29 10:29:09'),('0005','01','薛宝钗','13615172425','257595885@qq.com',"女",'会员','1994-03-18 00:00:00','备注','2019-04-25 11:19:30'),('0006','01','贾元春','13642445965','754925885@qq.com',"女",'超级会员','1989-07-08 00:00:00','备注','2019-05-01 10:19:24'),('0007','01','袭人','14592472425','344625885@qq.com',"女",'普通','1995-07-28 00:00:00','备注','2019-05-23 16:19:42');
+
+#创建课程表course_inf
+create table course_inf(
+  id varchar(4),
+  name varchar(20) not null,
+  cocah_id varchar(4),
+  place_id varchar(6) not null,
+  creatdate date not null,
+  remark varchar(500) null, 
+  primary key (id),
+  foreign key (place_id) references place_inf (id),
+  foreign key (cocah_id) references cocah_inf (id)
+);
+insert into course_inf(id,name,cocah_id,place_id,creatdate,remark)values('01','瑜伽进阶课','06','02','2020-1-23','瑜伽介绍'),('02','核心肌群锻炼','01','05','2020-1-15','力量训练介绍'),('03','游泳课','07','01','2019-12-14','游泳介绍');
+
+#创建器材表appa_inf
+create table appa_inf (
+  id varchar(6),
+  name varchar(20) not null,
+  mill varchar(20),
+  model varchar(20) not null,
+  price varchar(4)not null,
+  createdate date not null,
+  remark varchar(500) null,
+  primary key (id)
+);
+insert into appa_inf(id,name,mill,model,price,createdate,remark)values('01','杠铃','苏宁','no-01','900','2019-5-16','备注'),('02','跑步机','苏宁','no-02','8900','2019-5-22','备注'),('03','动感单车','淘宝','no-015','2800','2019-5-12','备注');
+
+#创建用户表user_inf
+
+create table user_inf (
+  id varchar(4) ,
+  loginname varchar(20) not null unique,
+  password varchar(100) not null,
+  status int not null default '1',
+  createdate date not null,
+  username varchar(20) default null,
+  role varchar(10),
+  primary key (id)
+) ;
+insert  into user_inf(id,loginname,password,status,createdate,username,role) values (1,'admin','$2a$10$KABH3XG/tqV9IUe3.UPt6.1ILlg93PV6JRxTeowh9JBb0MCJi2w.a',2,'2016-03-12 09:34:28','超级管理员','ADMIN'),(2,'user','$2a$10$KABH3XG/tqV9IUe3.UPt6.1ILlg93PV6JRxTeowh9JBb0MCJi2w.a',2,'2016-03-12 09:34:28','用户','USER');
+
